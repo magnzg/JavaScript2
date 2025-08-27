@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--DOM-->
+    <h1>DOM</h1>
+    <!--1-->
+    <p id="mensagem">Texto</p>
+    <button id="botao">Alterar</button>
+
+    <!--2-->
+    <p></p>
+    <button onclick="mudarCor()">Alterar cor</button>
+    
+    <!--3-->
+    <ul id="minhaLista">
+        <li>Item 1</li> 
+        <li>Item 2</li>
+    </ul>
+    <button onclick="adicionarItem()">Adicionar</button>
+
+    <!--4-->
+    <p id="meuParagrafo">Este é um parágrafo que será removido.</p>
+    <p></p>
+    <button onclick="removerParagrafo()">Remover</button>
+
+    <!--5-->
+    <h2 id="titulo">Título da Página</h2>
+    <p id="texto">Este é um texto que será alterado.</p>
+    <button onclick="personalizar()">Personalizar</button>
+
+    <!--Eventos do DOM-->
+    <h1>Eventos DOM</h1>
+    <!--1-->
+    <label>Digite seu nome:</label>
+    <input type="text" id="nome" oninput="mostrarNome()">
+    <p id="resposta"></p>
+
+    <!--2-->
+    <button id="caixa" onmouseover="mudarCor2()" onmouseout="corOriginal()">passe o mouse aqui</button>
+   
+    <!--3-->
+    <p id="paragrafo">Esse parágrafo vai sumir quando você der 2 cliques no botão.</p>
+    <p></p>
+    <button ondblclick="esconder()">Esconder</button>
+
+    <!--4-->
+    <p id="texto2">Clique no botão para mudar o tamanho da minha fonte.</p>
+    <button onclick="alterarFonte()">Mudar Fonte</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
