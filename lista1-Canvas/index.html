@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="meuCanvas" width="400" height="300" style="border: 5px solid black;"></canvas>
+
+    <script>
+        //Pegando o elemento canvas
+        const canvas = document.getElementById('meuCanvas')
+        const ctx = canvas.getContext('2d')
+
+        //Desenhando um quadrado verde
+        ctx.fillStyle = 'green' //Cor de preenchimento
+        ctx.fillRect(50, 50, 50, 50) //x, y, largura, altura
+
+        //Desenhando um círculo vermelho
+        ctx.beginPath() //Inicia um novo caminho
+        ctx.arc(190, 75, 35, 0, 2*Math.PI)
+        //Cento (200, 100) raio (30, 0, 2pi radio)
+        ctx.fillStyle = 'red'
+        ctx.fill() //Preenche o círculo
+
+        //Apagar uma parte do quadrado
+        ctx.clearRect(50, 50, 20, 30)
+
+        //Desenhando uma carinha feliz
+        //Cabeça
+        ctx.beginPath()
+        ctx.arc(320, 75, 35, 0, 2*Math.PI)
+        ctx.fillStyle = 'pink'
+        ctx.fill()
+        //Olhos
+        ctx.beginPath()
+        ctx.arc(305, 65, 7, 0, 2*Math.PI) //Olho esquerdo
+        ctx.arc(335, 65, 7, 0, 2*Math.PI) //Olho direito
+        ctx.fillStyle = 'purple'
+        ctx.fill()
+        //Boca
+        ctx.beginPath()
+        ctx.arc(320, 85, 5, 0, Math.PI) //Meio círculo
+        ctx.strokeStyle = 'red'
+        ctx.lineWidth = 3
+        ctx.stroke() //Desenha a boca
+
+        //Desenhando uma casa simples
+        //Base
+        ctx.fillStyle = 'purple'
+        ctx.fillRect(70, 200, 100, 80)
+        //Telhado
+        ctx.beginPath()
+        ctx.moveTo(70, 200) //Ponto inicial
+        ctx.lineTo(120, 150) //Linha de um lugar para outro
+        ctx.lineTo(170, 200) //Linha de um lugar para outro
+        ctx.closePath() //Fecha o triângulo
+        ctx.fillStyle = 'red'
+        ctx.fill() //Preenche o triângulo
+        //Porta
+        ctx.fillStyle = 'pink'
+        ctx.fillRect(110, 240, 20, 40)
+
+        //Desenhando bandeira Itália
+        //Verde
+        ctx.fillStyle = 'green'
+        ctx.fillRect(230, 200, 30, 80)
+        //Branco
+        ctx.fillStyle = 'white'
+        ctx.fillRect(260, 200, 30, 80)
+        //Vermelho
+        ctx.fillStyle = 'red'
+        ctx.fillRect(290, 200, 30, 80)
+
+    </script>
+</body>
+</html>

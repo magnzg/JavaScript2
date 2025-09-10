@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="meuCanvas" width="400" height="300" style="border: 5px solid black;"></canvas>
+
+    <script>
+        //Pegando o elemento canvas
+        const canvas = document.getElementById('meuCanvas')
+        const ctx = canvas.getContext('2d')
+
+        //Desenhando um retângulo
+        ctx.fillStyle = 'blue' //Cor de preenchimento
+        ctx.fillRect(50, 50, 100, 50) //x, y, largura, altura
+
+        //Desenhando um círculo
+        ctx.beginPath() //Inicia um novo caminho
+        ctx.arc(200, 100, 30, 0, 2*Math.PI)
+        //Cento (200, 100) raio (30, 0, 2pi radio)
+        ctx.fillStyle = 'green'
+        ctx.fill() //Preenche o círculo
+
+        //Desenhando um triângulo
+        ctx.beginPath()
+        ctx.moveTo(300, 50) //Ponto inicial
+        ctx.lineTo(250, 150) //Linha de um lugar para outro
+        ctx.lineTo(350, 150) //Linha de um lugar para outro
+        ctx.closePath() //Fecha o triângulo
+        ctx.fillStyle = 'red'
+        ctx.fill() //Preenche o triângulo
+
+        //Apagar uma parte no canvas
+        ctx.clearRect(100, 80, 50, 50)
+        //Apaga na posição 100 e 80
+        //Como uma borracha de 50x50
+
+
+    </script>
+</body>
+</html>
