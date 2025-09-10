@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="meuCanvas" width="400" height="300" style="border:5px solid black">
+
+        <script>
+            const canvas = document.getElementById('meuCanvas')
+            const ctx = canvas.getContext('2d')
+
+            // variáveis
+            // bolinha
+            let x = canvas.width / 2 //começa no meio da tela
+            let y = canvas.height - 30 //começa perto da parede de baixo
+            let dx = 3 //velocidade horizontal
+            let dy = -3 //velocidade vertical
+            const raio = 10 //raio da bolinha
+
+            // raquete
+            const raqueteAltura = 10 //altura da raquete
+            const raqueteLargura = 75 //largura da raquete
+            let raqueteX = (canvas.width - raqueteLargura) / 2
+            // posição x da rquete (horizontal)
+
+            // controle
+            let teclaDireita = false //vira true quando aperta
+            let teclaEsquerda = false //vira true quando aperta
+
+            //Eventos do teclado
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "ArrowRight") {
+                    teclaDireita = true
+                } else if (e.key === "ArrowLeft") {
+                    teclaEsquerda = true
+                }
+            })
+            //Quando solta a tecla ele para
+            document.addEventListener("keyup", function (e) {
+                if (e.key === "ArrowRight") {
+                    teclaDireita = false
+                } else if (e.key === "ArrowLeft") {
+                    teclaEsquerda = false
+                }
+            })
+
+            // Desenhos
+            //Bolinha
+            function desenharBola() {
+                ctx.beginPath() //iniciando um novo desenho
+                ctx.arc(x, y, raio, 0, Math.PI * 2) //definindo o tamanho e posição da bolinha
+                ctx.fillStyle = "red" //definindo a cor
+                ctx.fill() //pintando
+                ctx.closePath() //terminando o desenho
+            }
+
+            //Raquete
+            function desenharRaquete() {
+                ctx.beginPath()
+                ctx.rect(raqueteX, canvas.height - raqueteAltura - 5, raqueteLargura, raqueteAltura)
+                ctx.fillStyle = "blue"
+                ctx.fill()
+                ctx.closePath()
+            }
+
+            //animação
+            function desenhar() {
+                // Parte 1: limpar o canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+                // Parte 2: desenhar os elementos
+                desenharBola()
+                desenharRaquete()
+
+                // Parte 3: atualizar as posições usando a velocidade
+                x += dx
+                y += dy
+
+                // Parte 4: Verificar colisões 
+                if (x + dx > canvas.width - raio || x + dx < raio) {
+                    dx = -dx
+                } //colisões horizontais
+
+                //Parte 5: verificar colisão vertical
+                if (y + dy < raio) {
+                    dy = -dy
+                }//colisão com o topo
+
+                //Parte 6 : verificar colisão com a parte de baixo(requete fundo)
+                else if (y + dy > canvas.height - raio) {
+                    //se a bolinha estiver dentro da area da raquete, vai rebater
+                    if (x > raqueteX && x < raqueteX + raqueteLargura) {
+                        dy = -dy
+                    } else {
+                        alert("Game over!")
+                        return
+                    }
+                }
+                    //Parte 7: mover a raquete com setas
+                    //verificar limite da tela
+                    if (teclaDireita && raqueteX < canvas.width - raqueteLargura) {
+                        raqueteX += 7
+                    } else if (teclaEsquerda && raqueteX > 0) {
+                        raqueteX -= 7
+                    }
+
+                    //Parte 8: Rodar no navegador
+                    requestAnimationFrame(desenhar)
+                }
+                // Iniciar a animação
+                desenhar()
+
+        </script>
+</body>
+</html>
