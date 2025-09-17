@@ -1,0 +1,41 @@
+body {
+    margin: 20px;
+}
+
+/* % */
+.porcentagem {
+    width: 50%;
+    height: 50px;
+    background-color: lightcoral;
+}
+
+/* em */
+.pai {
+    font-size: 16px;
+    background-color: aquamarine;
+}
+
+.filho {
+    font-size: 2em; /*2x o tamanho do pai*/
+}
+
+/* rem */
+html {
+    font-size: 16px; /*tamanho base global*/
+}
+
+.rem {
+    font-size: 2rem; /*2x o tamanho do html*/
+    background-color: beige;
+}
+
+/* vh e vw */
+.vh {
+    height: 50vh; /*50% da altura da tela*/
+    background-color: blueviolet;
+}
+
+.vw {
+    width: 80vw; /*80% da largura da tela*/
+    background-color: plum;
+}
